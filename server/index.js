@@ -40,7 +40,7 @@ app.get("/", (req, res) =>{
 });
 
 // Postgres async/await fetch all values 
-app.get('/values/all', async (res, res) => { 
+app.get('/values/all', async (req, res) => {
     const values = await pgClient.query('SELECT * from values');
     res.send(values.rows);
 });
