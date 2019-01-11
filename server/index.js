@@ -42,13 +42,16 @@ app.get("/", (req, res) =>{
 // Postgres async/await fetch all values 
 app.get('/values/all', async (req, res) => {
     const values = await pgClient.query('SELECT * from values');
+    // if (err){
+    //     console.log(err);
+    // }
     res.send(values.rows);
 });
 
 // Redis async w/tradtional callback current values
 app.get('/values/current', async (req, res) => {
     redisClient.hgetall('values', (err, values) => {
-        res.send(values);
+        res.send(values)
     });
 });
 
