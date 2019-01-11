@@ -9,6 +9,14 @@ You can find the most recent version of this guide [here](https://github.com/fac
 
 In the project directory, you can run:
 
+### `docker compose up --build`
+
+Builds all docker containers needed for multi-container build
+
+### `docker compose down`
+
+Gracefully shuts down all containers.
+
 ### `npm start`
 
 Runs the app in the development mode.<br>
