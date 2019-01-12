@@ -20,3 +20,16 @@ after_success:
   - docker push goodfaith/multi-nginx
   - docker push goodfaith/multi-server
   - docker push goodfaith/multi-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-west-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: multi-docker
+  bucket_path: multi-docker
+    on:
+      branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: 
+      secure: $AWS_SECRET_KEY
