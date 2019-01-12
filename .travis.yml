@@ -17,6 +17,6 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Publish images to docker hub
   - docker push goodfaith/multi-client
-  - docker push goodfaith/mulit-nginx
-  - docker push goodfaith/mulit-server
-  - docker push goodfaith/mulit-worker
+  - docker push goodfaith/multi-nginx
+  - docker push goodfaith/multi-server
+  - docker push goodfaith/multi-worker
