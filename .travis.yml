@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run goodfaith/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t goodfaith/multi-client ./client
+  - docker build -t goodfaith/multi-nginx ./nginx
+  - docker build -t goodfaith/multi-server ./server
+  - docker build -t goodfaith/multi-worker ./worker
+  # Log in to the docker CLU
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Publish images to docker hub
+  - docker push goodfaith/multi-client
+  - docker push goodfaith/mulit-nginx
+  - docker push goodfaith/mulit-server
+  - docker push goodfaith/mulit-worker
